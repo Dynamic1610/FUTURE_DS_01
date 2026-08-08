@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superstore Sales Performance Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+<script>const DATA = {"kpis": {"total_sales": 2297200.86, "total_profit": 286397.02, "margin_pct": 12.47, "orders": 5009, "avg_order_value": 458.61, "total_customers": 793, "date_min": "Jan 2014", "date_max": "Dec 2017"}, "monthly": {"labels": ["Jan 2014", "Feb 2014", "Mar 2014", "Apr 2014", "May 2014", "Jun 2014", "Jul 2014", "Aug 2014", "Sep 2014", "Oct 2014", "Nov 2014", "Dec 2014", "Jan 2015", "Feb 2015", "Mar 2015", "Apr 2015", "May 2015", "Jun 2015", "Jul 2015", "Aug 2015", "Sep 2015", "Oct 2015", "Nov 2015", "Dec 2015", "Jan 2016", "Feb 2016", "Mar 2016", "Apr 2016", "May 2016", "Jun 2016", "Jul 2016", "Aug 2016", "Sep 2016", "Oct 2016", "Nov 2016", "Dec 2016", "Jan 2017", "Feb 2017", "Mar 2017", "Apr 2017", "May 2017", "Jun 2017", "Jul 2017", "Aug 2017", "Sep 2017", "Oct 2017", "Nov 2017", "Dec 2017"], "sales": [14236.9, 4519.89, 55691.01, 28295.34, 23648.29, 34595.13, 33946.39, 27909.47, 81777.35, 31453.39, 78628.72, 69545.62, 18174.08, 11951.41, 38726.25, 34195.21, 30131.69, 24797.29, 28765.32, 36898.33, 64595.92, 31404.92, 75972.56, 74919.52, 18542.49, 22978.82, 51715.88, 38750.04, 56987.73, 40344.53, 39261.96, 31115.37, 73410.02, 59687.74, 79411.97, 96999.04, 43971.37, 20301.13, 58872.35, 36521.54, 44261.11, 52981.73, 45264.42, 63120.89, 87866.65, 77776.92, 118447.82, 83829.32], "profit": [2450.19, 862.31, 498.73, 3488.84, 2738.71, 4976.52, -841.48, 5318.1, 8328.1, 3448.26, 9292.13, 8983.57, -3281.01, 2813.85, 9732.1, 4187.5, 4667.87, 3335.56, 3288.65, 5355.81, 8209.16, 2817.37, 12474.79, 8016.97, 2824.82, 5004.58, 3611.97, 2977.81, 8662.15, 4750.38, 4432.88, 2062.07, 9328.66, 16243.14, 4011.41, 17885.31, 7140.44, 1613.87, 14751.89, 933.29, 6342.58, 8223.34, 6952.62, 9040.96, 10991.56, 9275.28, 9690.1, 8483.35]}, "yearly": {"labels": ["2014", "2015", "2016", "2017"], "sales": [484247.5, 470532.51, 609205.6, 733215.26], "profit": [49543.97, 61618.6, 81795.17, 93439.27]}, "category": [{"Category": "Furniture", "Sales": 741999.8, "Profit": 18451.27, "Orders": 1764, "Margin": 2.49}, {"Category": "Office Supplies", "Sales": 719047.03, "Profit": 122490.8, "Orders": 3742, "Margin": 17.04}, {"Category": "Technology", "Sales": 836154.03, "Profit": 145454.95, "Orders": 1544, "Margin": 17.4}], "subcategory": [{"Sub-Category": "Phones", "Sales": 330007.05, "Profit": 44515.73, "Margin": 13.49}, {"Sub-Category": "Chairs", "Sales": 328449.1, "Profit": 26590.17, "Margin": 8.1}, {"Sub-Category": "Storage", "Sales": 223843.61, "Profit": 21278.83, "Margin": 9.51}, {"Sub-Category": "Tables", "Sales": 206965.53, "Profit": -17725.48, "Margin": -8.56}, {"Sub-Category": "Binders", "Sales": 203412.73, "Profit": 30221.76, "Margin": 14.86}, {"Sub-Category": "Machines", "Sales": 189238.63, "Profit": 3384.76, "Margin": 1.79}, {"Sub-Category": "Accessories", "Sales": 167380.32, "Profit": 41936.64, "Margin": 25.05}, {"Sub-Category": "Copiers", "Sales": 149528.03, "Profit": 55617.82, "Margin": 37.2}, {"Sub-Category": "Bookcases", "Sales": 114880.0, "Profit": -3472.56, "Margin": -3.02}, {"Sub-Category": "Appliances", "Sales": 107532.16, "Profit": 18138.01, "Margin": 16.87}, {"Sub-Category": "Furnishings", "Sales": 91705.16, "Profit": 13059.14, "Margin": 14.24}, {"Sub-Category": "Paper", "Sales": 78479.21, "Profit": 34053.57, "Margin": 43.39}, {"Sub-Category": "Supplies", "Sales": 46673.54, "Profit": -1189.1, "Margin": -2.55}, {"Sub-Category": "Art", "Sales": 27118.79, "Profit": 6527.79, "Margin": 24.07}, {"Sub-Category": "Envelopes", "Sales": 16476.4, "Profit": 6964.18, "Margin": 42.27}, {"Sub-Category": "Labels", "Sales": 12486.31, "Profit": 5546.25, "Margin": 44.42}, {"Sub-Category": "Fasteners", "Sales": 3024.28, "Profit": 949.52, "Margin": 31.4}], "region": [{"Region": "Central", "Sales": 501239.89, "Profit": 39706.36, "Orders": 1175, "Margin": 7.92}, {"Region": "East", "Sales": 678781.24, "Profit": 91522.78, "Orders": 1401, "Margin": 13.48}, {"Region": "South", "Sales": 391721.9, "Profit": 46749.43, "Orders": 822, "Margin": 11.93}, {"Region": "West", "Sales": 725457.82, "Profit": 108418.45, "Orders": 1611, "Margin": 14.94}], "top_states": [{"State": "California", "Sales": 457687.63, "Profit": 76381.39}, {"State": "New York", "Sales": 310876.27, "Profit": 74038.55}, {"State": "Texas", "Sales": 170188.05, "Profit": -25729.36}, {"State": "Washington", "Sales": 138641.27, "Profit": 33402.65}, {"State": "Pennsylvania", "Sales": 116511.91, "Profit": -15559.96}, {"State": "Florida", "Sales": 89473.71, "Profit": -3399.3}, {"State": "Illinois", "Sales": 80166.1, "Profit": -12607.89}, {"State": "Ohio", "Sales": 78258.14, "Profit": -16971.38}, {"State": "Michigan", "Sales": 76269.61, "Profit": 24463.19}, {"State": "Virginia", "Sales": 70636.72, "Profit": 18597.95}], "segment": [{"Segment": "Consumer", "Sales": 1161401.34, "Profit": 134119.21}, {"Segment": "Corporate", "Sales": 706146.37, "Profit": 91979.13}, {"Segment": "Home Office", "Sales": 429653.15, "Profit": 60298.68}], "discount": [{"DiscBucket": "0%", "Sales": 1087908.47, "Profit": 320987.6, "Orders": 4798}, {"DiscBucket": "1-20%", "Sales": 846522.24, "Profit": 100785.47, "Orders": 3803}, {"DiscBucket": "21-40%", "Sales": 234137.9, "Profit": -35817.47, "Orders": 460}, {"DiscBucket": "41-60%", "Sales": 71048.21, "Profit": -28944.19, "Orders": 215}, {"DiscBucket": "60%+", "Sales": 57584.04, "Profit": -70614.4, "Orders": 718}], "top_products": [{"Product Name": "Canon imageCLASS 2200 Advanced Copier", "Sales": 61599.82, "Profit": 25199.93}, {"Product Name": "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind", "Sales": 27453.38, "Profit": 7753.04}, {"Product Name": "Cisco TelePresence System EX90 Videoconferencing Unit", "Sales": 22638.48, "Profit": -1811.08}, {"Product Name": "HON 5400 Series Task Chairs for Big and Tall", "Sales": 21870.58, "Profit": 0.0}, {"Product Name": "GBC DocuBind TL300 Electric Binding System", "Sales": 19823.48, "Profit": 2233.51}, {"Product Name": "GBC Ibimaster 500 Manual ProClick Binding System", "Sales": 19024.5, "Profit": 760.98}, {"Product Name": "Hewlett Packard LaserJet 3310 Copier", "Sales": 18839.69, "Profit": 6983.88}, {"Product Name": "HP Designjet T520 Inkjet Large Format Printer - 24\" Color", "Sales": 18374.9, "Profit": 4094.98}, {"Product Name": "GBC DocuBind P400 Electric Binding System", "Sales": 17965.07, "Profit": -1878.17}, {"Product Name": "High Speed Automatic Electric Letter Opener", "Sales": 17030.31, "Profit": -262.0}], "worst_products": [{"Product Name": "Cubify CubeX 3D Printer Double Head Print", "Sales": 11099.96, "Profit": -8879.97}, {"Product Name": "Lexmark MX611dhe Monochrome Laser Printer", "Sales": 16829.9, "Profit": -4589.97}, {"Product Name": "Cubify CubeX 3D Printer Triple Head Print", "Sales": 7999.98, "Profit": -3839.99}, {"Product Name": "Chromcraft Bull-Nose Wood Oval Conference Tables & Bases", "Sales": 9917.64, "Profit": -2876.12}, {"Product Name": "Bush Advantage Collection Racetrack Conference Table", "Sales": 9544.72, "Profit": -1934.4}, {"Product Name": "GBC DocuBind P400 Electric Binding System", "Sales": 17965.07, "Profit": -1878.17}, {"Product Name": "Cisco TelePresence System EX90 Videoconferencing Unit", "Sales": 22638.48, "Profit": -1811.08}, {"Product Name": "Martin Yale Chadless Opener Electric Letter Opener", "Sales": 16656.2, "Profit": -1299.18}, {"Product Name": "Balt Solid Wood Round Tables", "Sales": 6518.75, "Profit": -1201.06}, {"Product Name": "BoxOffice By Design Rectangular and Half-Moon Meeting Room Tables", "Sales": 1706.25, "Profit": -1148.44}]};</script>
+<style>
+  :root{
+    --ink:#131B2E;
+    --ink-soft:#3D4863;
+    --paper:#EDEFF2;
+    --paper-raised:#FFFFFF;
+    --line:#D4D8E0;
+    --profit:#1F7A5C;
+    --profit-soft:#E4F1EC;
+    --loss:#A83E3E;
+    --loss-soft:#F6E7E5;
+    --gold:#C9962B;
+    --gold-soft:#FBF1DD;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+  .serif{font-family:'Fraunces',serif;}
+
+  /* ---- Header / ledger band ---- */
+  header{
+    background:var(--ink);
+    color:var(--paper);
+    padding:48px 0 0 0;
+    border-bottom:6px solid var(--gold);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 14px 0;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(32px,4.5vw,52px);
+    line-height:1.05;
+    margin:0 0 12px 0;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{
+    font-size:16px;
+    color:#B9C0D4;
+    max-width:640px;
+    line-height:1.55;
+    margin:0 0 36px 0;
+  }
+  .kpi-strip{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  .kpi{
+    padding:22px 20px 26px 0;
+    border-right:1px solid rgba(255,255,255,.14);
+  }
+  .kpi:last-child{border-right:none;}
+  .kpi-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#8891AC;
+    margin-bottom:8px;
+  }
+  .kpi-value{
+    font-family:'Fraunces',serif;
+    font-size:28px;
+    font-weight:600;
+    color:#fff;
+  }
+  .kpi-value.gold{color:var(--gold);}
+
+  /* ---- Sections ---- */
+  section{padding:56px 0;}
+  section.alt{background:var(--paper-raised);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:28px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:14px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  h2{
+    font-family:'Fraunces',serif;
+    font-size:26px;
+    font-weight:600;
+    margin:2px 0 0 0;
+  }
+  .section-note{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    max-width:320px;
+    text-align:right;
+    line-height:1.5;
+  }
+  p.lead{font-size:15px;line-height:1.65;color:var(--ink-soft);max-width:720px;margin-top:0;}
+
+  .grid-2{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;}
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:24px;
+  }
+  section.alt .card{background:var(--paper);}
+  .card h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 18px 0;
+  }
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th{
+    text-align:left;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:0 8px 10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  td{padding:9px 8px 9px 0;border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.num{font-family:'IBM Plex Mono',monospace;text-align:right;}
+  .pos{color:var(--profit);font-weight:600;}
+  .neg{color:var(--loss);font-weight:600;}
+
+  .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    padding:2px 7px;
+    border-radius:2px;
+  }
+  .tag.pos{background:var(--profit-soft);color:var(--profit);}
+  .tag.neg{background:var(--loss-soft);color:var(--loss);}
+
+  /* ---- Advisory memo ---- */
+  .memo{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-left:5px solid var(--gold);
+    padding:32px 36px;
+    margin-bottom:20px;
+  }
+  .memo-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:.08em;
+  }
+  .memo h4{
+    font-family:'Fraunces',serif;
+    font-size:19px;
+    font-weight:600;
+    margin:6px 0 10px 0;
+  }
+  .memo p{font-size:14.5px;line-height:1.65;color:var(--ink-soft);margin:0 0 10px 0;}
+  .memo .action{
+    font-size:13.5px;
+    color:var(--ink);
+    background:var(--gold-soft);
+    display:inline-block;
+    padding:8px 12px;
+    margin-top:4px;
+    border-radius:2px;
+  }
+  .action b{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;margin-right:6px;}
+
+  footer{
+    padding:36px 0 60px 0;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:860px){
+    .kpi-strip{grid-template-columns:repeat(2,1fr);}
+    .kpi:nth-child(2n){border-right:none;}
+    .grid-2{grid-template-columns:1fr;}
+    .section-head{flex-direction:column;align-items:flex-start;gap:8px;}
+    .section-note{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Business Analytics &middot; Confidential Draft</p>
+    <h1>Sales Performance Review</h1>
+    <p class="subtitle">A ground-up analysis of retail order data — where the revenue comes from, where the margin leaks out, and what to do about it.</p>
+    <div class="kpi-strip" id="kpiStrip"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">01 &nbsp;/&nbsp; Trend</div>
+        <h2>Revenue is growing. Profit is growing slower.</h2>
+      </div>
+      <div class="section-note">Monthly sales and profit, full order history. Strong Q4 seasonality every year.</div>
+    </div>
+    <div class="card">
+      <h3>Monthly Sales vs. Profit</h3>
+      <div id="chartMonthly" style="height:380px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">02 &nbsp;/&nbsp; The Margin Ledger</div>
+        <h2>One category is carrying the other two.</h2>
+      </div>
+      <div class="section-note">Sub-category margin, sorted. Bars crossing into red are losing money on every dollar sold.</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Margin % by Sub-Category</h3>
+        <div id="chartSubcat" style="height:460px;"></div>
+      </div>
+      <div class="card">
+        <h3>Category Scorecard</h3>
+        <table id="tblCategory"></table>
+        <h3 style="margin-top:26px;">Region Scorecard</h3>
+        <table id="tblRegion"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">03 &nbsp;/&nbsp; The Discount Trap</div>
+        <h2>Past ~20% off, discounts stop paying for themselves.</h2>
+      </div>
+      <div class="section-note">Every order, grouped by discount size. Profit turns negative right where discounting gets aggressive.</div>
+    </div>
+    <div class="card">
+      <h3>Total Profit by Discount Band</h3>
+      <div id="chartDiscount" style="height:340px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">04 &nbsp;/&nbsp; Product Mix</div>
+        <h2>Best sellers aren't always best earners.</h2>
+      </div>
+      <div class="section-note">Top line items by revenue, and the ten that lost the most money outright.</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Top 10 Products by Sales</h3>
+        <table id="tblTopProd"></table>
+      </div>
+      <div class="card">
+        <h3>10 Biggest Money Losers</h3>
+        <table id="tblWorstProd"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">05 &nbsp;/&nbsp; Advisory</div>
+        <h2>Insights &amp; Recommendations</h2>
+      </div>
+      <div class="section-note">Four moves, ranked by expected impact on the bottom line.</div>
+    </div>
+
+    <div class="memo">
+      <div class="memo-num">FINDING 01</div>
+      <h4>Furniture sells like a star and earns like an afterthought</h4>
+      <p>Furniture brings in $742K — almost as much as Technology's $836K — but converts it into only a 2.5% margin, versus 17%+ for Office Supplies and Technology. Tables and Bookcases are outright unprofitable across the full order history.</p>
+      <div class="action"><b>Do this</b>Re-price or renegotiate cost on Tables and Bookcases before pushing more volume through them. More Furniture sales at current terms means more money lost, not more profit.</div>
+    </div>
+
+    <div class="memo">
+      <div class="memo-num">FINDING 02</div>
+      <h4>Deep discounts are the biggest single driver of lost profit</h4>
+      <p>Orders with 0–20% off are reliably profitable. The moment discounts cross ~20%, cumulative profit goes negative — and it gets worse from there. This pattern holds inside Furniture too: undiscounted Tables are profitable; discounted ones are the primary reason the sub-category loses money at all.</p>
+      <div class="action"><b>Do this</b>Cap standard discounting at 20% except for cases with clear strategic reason (clearing dead stock, landing a large account), and require approval above that line.</div>
+    </div>
+
+    <div class="memo">
+      <div class="memo-num">FINDING 03</div>
+      <h4>The West and East regions are the profit engine</h4>
+      <p>West (14.9% margin) and East (13.5%) outperform Central (7.9%) by a wide margin, despite Central running a similar order volume to South. Central's underperformance tracks closely with heavier Furniture and discount exposure in that region.</p>
+      <div class="action"><b>Do this</b>Investigate Central's discount approval habits and category mix specifically — it's the clearest region-level opportunity to recover margin without losing volume.</div>
+    </div>
+
+    <div class="memo">
+      <div class="memo-num">FINDING 04</div>
+      <h4>Copiers, Labels, and Paper are the best-kept secret</h4>
+      <p>Copiers (37% margin), Labels (44%), Envelopes (42%) and Paper (43%) are the highest-margin sub-categories in the business, but they're a small share of total sales. There's clear headroom to grow these lines without the margin risk that comes with Furniture.</p>
+      <div class="action"><b>Do this</b>Bundle high-margin Office Supplies (Paper, Labels, Envelopes) into offers alongside Technology purchases, where basket sizes are already largest.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Source: Superstore order-level transaction data, <span id="footDateRange"></span> &middot; <span id="footOrders"></span> orders across <span id="footCustomers"></span> customers &middot; Prepared as an internship analytics deliverable.
+  </div>
+</footer>
+
+<script>
+const fmt$ = (n) => '$' + Math.round(n).toLocaleString('en-US');
+const fmt$k = (n) => (n<0?'-$':'$') + Math.abs(n/1000).toFixed(0) + 'K';
+const fmtPct = (n) => (n>=0?'+':'') + n.toFixed(1) + '%';
+
+const FONT = "'IBM Plex Sans', sans-serif";
+const INK = '#131B2E';
+const INK_SOFT = '#3D4863';
+const PROFIT = '#1F7A5C';
+const LOSS = '#A83E3E';
+const GOLD = '#C9962B';
+const LINE = '#D4D8E0';
+
+const baseLayout = {
+  font: {family: FONT, color: INK_SOFT, size: 12.5},
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  margin: {l:56,r:20,t:10,b:44},
+  hoverlabel: {font: {family: FONT}, bgcolor: INK, bordercolor: INK, font_color: '#fff'}
+};
+
+// ---- KPI strip ----
+const k = DATA.kpis;
+const kpiItems = [
+  ['Total Sales', fmt$(k.total_sales), false],
+  ['Total Profit', fmt$(k.total_profit), true],
+  ['Overall Margin', k.margin_pct.toFixed(1)+'%', true],
+  ['Orders', k.orders.toLocaleString(), false],
+  ['Avg Order Value', fmt$(k.avg_order_value), false],
+];
+document.getElementById('kpiStrip').innerHTML = kpiItems.map(([label,val,gold]) =>
+  `<div class="kpi"><div class="kpi-label">${label}</div><div class="kpi-value${gold?' gold':''}">${val}</div></div>`
+).join('');
+document.getElementById('footDateRange').textContent = k.date_min + ' \u2013 ' + k.date_max;
+document.getElementById('footOrders').textContent = k.orders.toLocaleString();
+document.getElementById('footCustomers').textContent = k.total_customers.toLocaleString();
+
+// ---- Monthly chart ----
+Plotly.newPlot('chartMonthly', [
+  {
+    x: DATA.monthly.labels, y: DATA.monthly.sales, name: 'Sales',
+    type: 'scatter', mode: 'lines', line: {color: INK, width: 2},
+    fill: 'tozeroy', fillcolor: 'rgba(19,27,46,0.06)'
+  },
+  {
+    x: DATA.monthly.labels, y: DATA.monthly.profit, name: 'Profit',
+    type: 'scatter', mode: 'lines', line: {color: GOLD, width: 2.5}
+  }
+], {
+  ...baseLayout,
+  legend: {orientation:'h', x:0, y:1.12, font:{size:12}},
+  xaxis: {showgrid:false, tickangle:-45, tickfont:{size:10}, nticks: 16},
+  yaxis: {gridcolor: LINE, tickprefix:'$', tickformat:',.0s'},
+}, {displayModeBar:false, responsive:true});
+
+// ---- Sub-category margin ledger ----
+const subcat = [...DATA.subcategory].sort((a,b)=>a.Margin-b.Margin);
+Plotly.newPlot('chartSubcat', [{
+  x: subcat.map(d=>d.Margin),
+  y: subcat.map(d=>d['Sub-Category']),
+  type: 'bar',
+  orientation: 'h',
+  marker: {color: subcat.map(d=>d.Margin<0?LOSS:PROFIT)},
+  text: subcat.map(d=>d.Margin.toFixed(1)+'%'),
+  textposition: 'outside',
+  textfont: {family:"'IBM Plex Mono', monospace", size:11, color: INK},
+  hovertemplate: '%{y}<br>Margin: %{x:.1f}%<extra></extra>'
+}], {
+  ...baseLayout,
+  margin: {l:110,r:40,t:10,b:36},
+  xaxis: {gridcolor: LINE, zeroline:true, zerolinecolor: INK, zerolinewidth:1.5, ticksuffix:'%'},
+  yaxis: {showgrid:false, tickfont:{size:11.5}},
+}, {displayModeBar:false, responsive:true});
+
+// ---- Discount bands ----
+const disc = DATA.discount;
+Plotly.newPlot('chartDiscount', [{
+  x: disc.map(d=>d.DiscBucket),
+  y: disc.map(d=>d.Profit),
+  type: 'bar',
+  marker: {color: disc.map(d=>d.Profit<0?LOSS:PROFIT)},
+  text: disc.map(d=>fmt$k(d.Profit)),
+  textposition: 'outside',
+  textfont: {family:"'IBM Plex Mono', monospace", size:11.5, color: INK},
+  hovertemplate: '%{x} off<br>Total profit: %{y:$,.0f}<extra></extra>'
+}], {
+  ...baseLayout,
+  xaxis: {showgrid:false, title:{text:'Discount applied', font:{size:12}}},
+  yaxis: {gridcolor: LINE, zeroline:true, zerolinecolor: INK, zerolinewidth:1.5, tickprefix:'$', tickformat:',.0s'},
+}, {displayModeBar:false, responsive:true});
+
+// ---- Category & Region tables ----
+function rowsToTable(el, headers, rows) {
+  el.innerHTML = `<thead><tr>${headers.map(h=>`<th${h.num?' style="text-align:right"':''}>${h.label}</th>`).join('')}</tr></thead>
+  <tbody>${rows.join('')}</tbody>`;
+}
+
+rowsToTable(document.getElementById('tblCategory'),
+  [{label:'Category'},{label:'Sales',num:true},{label:'Margin',num:true}],
+  DATA.category.sort((a,b)=>b.Sales-a.Sales).map(d=>
+    `<tr><td>${d.Category}</td><td class="num">${fmt$k(d.Sales)}</td><td class="num"><span class="tag ${d.Margin<0?'neg':'pos'}">${fmtPct(d.Margin)}</span></td></tr>`
+  )
+);
+
+rowsToTable(document.getElementById('tblRegion'),
+  [{label:'Region'},{label:'Sales',num:true},{label:'Margin',num:true}],
+  DATA.region.sort((a,b)=>b.Sales-a.Sales).map(d=>
+    `<tr><td>${d.Region}</td><td class="num">${fmt$k(d.Sales)}</td><td class="num"><span class="tag ${d.Margin<0?'neg':'pos'}">${fmtPct(d.Margin)}</span></td></tr>`
+  )
+);
+
+rowsToTable(document.getElementById('tblTopProd'),
+  [{label:'Product'},{label:'Sales',num:true},{label:'Profit',num:true}],
+  DATA.top_products.map(d=>
+    `<tr><td>${d['Product Name'].length>34?d['Product Name'].slice(0,34)+'\u2026':d['Product Name']}</td><td class="num">${fmt$k(d.Sales)}</td><td class="num ${d.Profit<0?'neg':'pos'}">${fmt$k(d.Profit)}</td></tr>`
+  )
+);
+
+rowsToTable(document.getElementById('tblWorstProd'),
+  [{label:'Product'},{label:'Sales',num:true},{label:'Profit',num:true}],
+  DATA.worst_products.map(d=>
+    `<tr><td>${d['Product Name'].length>34?d['Product Name'].slice(0,34)+'\u2026':d['Product Name']}</td><td class="num">${fmt$k(d.Sales)}</td><td class="num neg">${fmt$k(d.Profit)}</td></tr>`
+  )
+);
+</script>
+
+</body>
+</html>
